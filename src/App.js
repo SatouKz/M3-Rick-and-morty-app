@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
-  const [listCharacters, setListCharacter] = useState();
+  const [listCharacters, setListCharacter] = useState('');
   // console.log(listCharacters);
-  const [selectedCharacter, setSelectedCharacter] = useState();
+  const [selectedCharacter, setSelectedCharacter] = useState({});
   // Fetch promises
   const initialUrl = "https://rickandmortyapi.com/api/character";
   const fetchCharacter = (url) => {
@@ -25,7 +25,7 @@ function App() {
     e.preventDefault();
     const characterId = e.target.value;
     const selectedCharacter = listCharacters.filter(
-      (character) => character.id === characterId
+      (character) => character.id == characterId
     )[0];
     setSelectedCharacter(selectedCharacter);
   };
@@ -44,7 +44,7 @@ function App() {
       </select>
       {selectedCharacter && (
         <div className="card">
-          <img src={selectedCharacter.image} alt="Imagen" />
+          <img src={selectedCharacter.image} alt="imagen" />
           <div className="info">
             <h3>{selectedCharacter.name}</h3>
             <p>
@@ -56,7 +56,7 @@ function App() {
           </div>
         </div>
       )}
-    </div>
+      </div>
   );
 }
 
